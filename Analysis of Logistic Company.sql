@@ -75,4 +75,10 @@ select c.c_name,c.c_email_id,c.c_cont_no,c.c_type,p.amount from
 customer c inner join payment_details p on c.c_id=p.c_id 
 where c.c_type in ("wholesale","retail");
 
+-- Q18) Create a view for delivery company to see only customer name, address, contact number, payment status?
+create view Delivery_info as select c.c_name as name, c.c_addr, c.C_CONT_NO, p.payment_status from
+customer c inner join payment_details p on c.c_id = p.c_id; 
+select * from delivery_info;
 
+-- Q19) Create a list to Segregate fragile and hazardous items before transportation to avoid any calamities
+select * from shipment_details where SH_CONTENT in ("electronics","arts and crafts","healthcare","hazardous goods");
